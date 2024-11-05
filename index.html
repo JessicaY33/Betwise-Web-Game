@@ -3,11 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    
     <title>Betwise</title>
     <link rel = "stylesheet" type = "text/css" href = "style.css">
+    <script src = "script.js"></script>
 </head>
 <body>
     <h1>YOU CAN WIN $1,000,000!!!</h1>
-    <img src = "Images/SlotMachine_Expanded.png" alt = "The Slot Machine!">
+    <img id = "SlotMachine" src = "Images/SlotMachine_Expanded.png" alt = "The Slot Machine!"></span>
+    <div id = "ButtonPosition"><button type = "button" onclick = Roll()>ROLL!!!</button></div>
+    <p>Results:</p>
+    <div id = "SlotResults">
+        <span id = "SlotResult1"></span>
+        <span id = "SlotResult2"></span>
+        <span id = "SlotResult3"></span>
+    </div>
+    <p>Current Amount Bet: $<span id = "BetAmount">0</span></p>
+    <button type = "button" onclick = Add()>+</button><button type = "button" onclick = Sub()>-</button>
+    <div id = "Totals">
+        <p>You have spent $<span id = "Amount">0</span> in total so far</p>
+        <p>You have rolled <span id = "Times">0</span> times</p>
+    </div>
 </body>
 </html>

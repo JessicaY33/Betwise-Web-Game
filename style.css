@@ -1,0 +1,95 @@
+.press-start-2p-regular {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+body 
+{
+    font-family: "Pixelify Sans", serif;
+
+    background-color: black;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1
+{
+
+    font-size: 48px;
+    text-align: center;
+
+    color: magenta;
+    animation-name: transition;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes transition
+{
+    0%{color: magenta;}
+    50%{color: yellow;}
+    100%{color: magenta;}
+}
+
+#SlotMachine
+{
+    width: 300px;
+    height: 300px;
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    position: relative;
+
+    background-color: white;
+}
+
+button
+{
+    font-family: "Pixelify Sans", serif;
+    font-size: 36px;
+    text-align: center;
+
+    color: white;
+
+    width: 150px;
+    height: 75px;
+
+    border-radius: 10px;
+    background-color: goldenrod;
+    border: solid rgb(151, 83, 10);
+
+    transition-duration: 0.4s;
+}
+
+#ButtonPosition
+{
+    text-align: center;
+
+    padding-top: 20px;
+}
+
+button:hover{
+    background-color: orange;
+}
+
+p
+{
+    color: red;
+    font-size: 36px;
+}
+
+img
+{
+    width: 150px;
+    height: 150px;
+}
+
+#SlotResults
+{
+    display: flex;
+    justify-content: center;
+}
