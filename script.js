@@ -157,3 +157,10 @@ function DebtMilestone()
         break;
     }
 }
+
+window.addEventListener('click', function () {
+    
+    let audio = document.getElementById("Jazz");
+    audio.volume = 0.2;
+    audio.play();
+});
