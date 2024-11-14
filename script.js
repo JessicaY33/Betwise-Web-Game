@@ -165,7 +165,7 @@ function DebtMilestone()
         case (amountSpent >= 30000 && amountSpent < 50000):
             if(milestone5)
             {
-                SlotMachineSays("There's no turning back at this point, you need to WIN something back at this point. Go big or go broke!", 10);
+                SlotMachineSays("There's no turning back at this point, you need to WIN something. Go big or go home!", 10);
                 milestone5 = false;
             }
         break;
