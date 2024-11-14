@@ -21,6 +21,12 @@ let milestone1 = true;
 let milestone2 = true;
 let milestone3 = true;
 let milestone4 = true;
+let milestone5 = true;
+let milestone6 = true;
+let milestone7 = true;
+let milestone8 = true;
+let milestone9 = true;
+let milestone10 = true;
 
 function Roll()
 {
@@ -124,35 +130,83 @@ function DebtMilestone()
     let amountSpent = 10000 - currentBalance;
     switch(true)
     {
-        case (amountSpent >= 1000 && amountSpent <= 2499):
+        case (amountSpent >= 1000 && amountSpent < 2500):
             if(milestone1)
             {
-                SlotMachineSays("You already spent past $1,000 huh? That could have bought you 125,165 v-bucks, 250 happy meals, and 2 PS5s.", 8);
+                SlotMachineSays("You already spent $1000 huh? That could have bought you 125,165 v-bucks, 250 happy meals, and 2 PS5s.", 8);
                 milestone1 = false;
             }
         break;
 
-        case (amountSpent >= 2500 && amountSpent <= 4999):
+        case (amountSpent >= 2500 && amountSpent < 10000):
             if(milestone2)
             {
-                SlotMachineSays("It must be fun pressing a button. You have already spent past $2,500. That's about 1,370,55 Robux, 5,597 cosmic brownies, 21 tickets to Disney world. Truly a child's nightmarish paradise, isn't it?", 10);
+                SlotMachineSays("It must be REAL fun pressing a button...You have already spent past $2500. That's about 1,370,55 Robux, 5,597 cosmic brownies, 21 tickets to Disney world. Truly a child's nightmarish paradise, isn't it?", 10);
                 milestone2 = false;
             }
         break;
 
-        case (amountSpent >= 10000 && amountSpent <= 14999):
+        case (amountSpent >= 10000 && amountSpent < 18000):
             if(milestone3)
             {
-                SlotMachineSays("Yippee! You have lost $10,000 and your time playing this \"game\". You should quit now! :D", 10);
+                SlotMachineSays("Yippee! You have wasted all your money and your time playing this \"game\". You should quit NOW! :D", 10);
                 milestone3 = false;
             }
         break;
 
-        case (amountSpent >= 120000 && amountSpent <= 139999):
+        case (amountSpent >= 18000 && amountSpent < 30000):
             if(milestone4)
             {
-                SlotMachineSays("Big number go brrrr. What's debt?", 5);
+                SlotMachineSays("Did you know that RED means DEBT?! You're gonna eventually pay them all...Right?", 5);
                 milestone4 = false;
+            }
+        break;
+
+        case (amountSpent >= 30000 && amountSpent < 50000):
+            if(milestone5)
+            {
+                SlotMachineSays("There's no turning back at this point, you need to WIN something back at this point. Go big or go broke!", 10);
+                milestone5 = false;
+            }
+        break;
+
+        case (amountSpent >= 50000 && amountSpent < 80000):
+            if(milestone6)
+            {
+                SlotMachineSays("You're definitely going bankrupt. You're not winning this.", 5);
+                milestone6 = false;
+            }
+        break;
+
+        case (amountSpent >= 80000 && amountSpent < 120000):
+            if(milestone7)
+            {
+                SlotMachineSays("I wasn't joking about the last one. YOU'RE NOT WINNING THIS.", 5);
+                milestone7 = false;
+            }
+        break;
+
+        case (amountSpent >= 120000 && amountSpent < 180000):
+            if(milestone8)
+            {
+                SlotMachineSays("This whole thing is a sham. You were never meant to win anything since the beginning. LEAVE. there's nothing to be gain here.", 10);
+                milestone8 = false;
+            }
+        break;
+
+        case (amountSpent >= 180000 && amountSpent < 350000):
+            if(milestone9)
+            {
+                SlotMachineSays("I hope you're happy with this decision.", 5);
+                milestone9 = false;
+            }
+        break;
+
+        case (amountSpent >= 350000):
+            if(milestone10)
+            {
+                SlotMachineSays("Big number go brrrr. What's debt?", 5);
+                milestone10 = false;
             }
         break;
     }
@@ -162,5 +216,6 @@ window.addEventListener('click', function () {
     
     let audio = document.getElementById("Jazz");
     audio.volume = 0.2;
+    audio.loop = true;
     audio.play();
 });
