@@ -4,6 +4,7 @@ let totalRoll = 0;
 let currentBalance = 10000;
 let textSize = 24;
 
+let timeout;
 let buttonHoldTime;
 
 let imageArray = new Array();
@@ -15,6 +16,11 @@ imageArray[4] = "images/Grape_slot_Expanded.png";
 imageArray[5] = "images/Lemon_slot_Expanded.png";
 imageArray[6] = "images/Orange_slot_Expanded.png";
 imageArray[7] = "images/Seven_slot_Expanded.png";
+
+let milestone1 = true;
+let milestone2 = true;
+let milestone3 = true;
+let milestone4 = true;
 
 function Roll()
 {
@@ -101,9 +107,10 @@ function displayBalance()
 
 function SlotMachineSays(line, time)
 {
+    window.clearTimeout(timeout);
     SpeechBubble.style.visibility = "visible";
     SlotSays.innerHTML = line;
-    setTimeout(CloseSpeechBubble, time * 1000);
+    timeout = setTimeout(CloseSpeechBubble, time * 1000);
 }
 
 function CloseSpeechBubble()
@@ -118,11 +125,35 @@ function DebtMilestone()
     switch(true)
     {
         case (amountSpent >= 1000 && amountSpent <= 2499):
-            SlotMachineSays("You already spent past $1,000 huh? That could have bought you 125,165 v-bucks, 250 happy meals, and 2 PS5s.", 8);
+            if(milestone1)
+            {
+                SlotMachineSays("You already spent past $1,000 huh? That could have bought you 125,165 v-bucks, 250 happy meals, and 2 PS5s.", 8);
+                milestone1 = false;
+            }
         break;
 
         case (amountSpent >= 2500 && amountSpent <= 4999):
-            SlotMachineSays("It must be fun pressing a button. You have already spent past $2,500. That's about 1,370,55 Robux, 5,597 cosmic brownies, 21 tickets to Disney world. Truly a child's nightmarish paradise, isn't it?", 10);
+            if(milestone2)
+            {
+                SlotMachineSays("It must be fun pressing a button. You have already spent past $2,500. That's about 1,370,55 Robux, 5,597 cosmic brownies, 21 tickets to Disney world. Truly a child's nightmarish paradise, isn't it?", 10);
+                milestone2 = false;
+            }
+        break;
+
+        case (amountSpent >= 10000 && amountSpent <= 14999):
+            if(milestone3)
+            {
+                SlotMachineSays("Yippee! You have lost $10,000 and your time playing this \"game\". You should quit now! :D", 10);
+                milestone3 = false;
+            }
+        break;
+
+        case (amountSpent >= 120000 && amountSpent <= 139999):
+            if(milestone4)
+            {
+                SlotMachineSays("Big number go brrrr. What's debt?", 5);
+                milestone4 = false;
+            }
         break;
     }
 }
