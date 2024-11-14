@@ -6,28 +6,45 @@
    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     
     <title>Betwise</title>
     <link rel = "stylesheet" type = "text/css" href = "style.css">
     <script src = "script.js"></script>
 </head>
 <body>
-    <h1>YOU CAN WIN $1,000,000!!!</h1>
-    <img id = "SlotMachine" src = "Images/SlotMachine_Expanded.png" alt = "The Slot Machine!"></span>
-    <div id = "ButtonPosition"><button type = "button" onclick = Roll()>ROLL!!!</button></div>
-    <p>Results:</p>
-    <div id = "SlotResults">
-        <span id = "SlotResult1"></span>
-        <span id = "SlotResult2"></span>
-        <span id = "SlotResult3"></span>
-    </div>
-    <p>Current Amount Bet: $<span id = "BetAmount">0</span></p>
-    <button type = "button" onclick = Add()>+</button><button type = "button" onclick = Sub()>-</button>
-    <div id = "Totals">
-        <p>You have spent $<span id = "Amount">0</span> in total so far</p>
-        <p>You have rolled <span id = "Times">0</span> times</p>
+    <div class = "grid-container">
+        <div id = "AdSign"><h1>MATCH THREE TO WIN $$$</h1></div>
+        
+        <div id = "SlotSection">
+            <div id = "SlotMachinePositioner">
+                <img id = "SlotMachine" src = "images/SlotMachine_Expanded.png" alt = "The Slot Machine!">
+                <div id = "SlotResults">
+                    <span id = "SlotResult1"></span>
+                    <span id = "SlotResult2"></span>
+                    <span id = "SlotResult3"></span>
+                </div>
+            </div>
+        </div>
+
+        <p id = "BalanceText">Your Balance: </p>
+        <div id = "BalanceSection"><p id = "MoneyDisplay">$10000</p></div>
+
+        <div id = "BetSection">
+            <p>Your Bet</p>
+            <button type = "button" onclick = Add() onmousedown = "startButtonHoldTime(Add)" onmouseup = "resetButtonHoldTime()">+</button>
+            <p id = "DollarSign">$<span id = "BetAmount">0</span></p>
+            <button type = "button" style = "margin-bottom: 50px;" onclick = Sub() onmousedown = "startButtonHoldTime(Sub)" onmouseup = "resetButtonHoldTime()">-</button>
+        </div>
+
+        <div id = "Textbox">
+            <img id = "SpeechBubble" src = "images/SlotMachineSpeechBubble_Expanded.png" alt = "">
+            <p id = "SlotSays"></p>
+        </div>
+
+        <div id = "RollSection">
+            <button id = "RollButton" type = "button" onclick = Roll()>ROLL!!!</button>
+        </div>
     </div>
 </body>
 </html>

@@ -1,19 +1,25 @@
-currentBetAmount = 0;
-totalSpent = 0;
-totalRoll = 0;
+let currentBetAmount = 0;
+let totalSpent = 0;
+let totalRoll = 0;
+let currentBalance = 10000;
+let textSize = 24;
 
-imageArray = new Array();
-imageArray[0] = 'Images/BAR_slot_Expanded.png';
-imageArray[1] = 'Images/Bell_slot_Expanded.png';
-imageArray[2] = 'Images/Cherry_slot_Expanded.png';
-imageArray[3] = 'Images/Diamond_slot_Expanded.png';
-imageArray[4] = 'Images/Grape_slot_Expanded.png';
-imageArray[5] = 'Images/Lemon_slot_Expanded.png';
-imageArray[6] = 'Images/Orange_slot_Expanded.png';
-imageArray[7] = 'Images/Seven_slot_Expanded.png';
+let buttonHoldTime;
+
+let imageArray = new Array();
+imageArray[0] = "images/BAR_slot_Expanded.png";
+imageArray[1] = "images/Bell_slot_Expanded.png";
+imageArray[2] = "images/Cherry_slot_Expanded.png";
+imageArray[3] = "images/Diamond_slot_Expanded.png";
+imageArray[4] = "images/Grape_slot_Expanded.png";
+imageArray[5] = "images/Lemon_slot_Expanded.png";
+imageArray[6] = "images/Orange_slot_Expanded.png";
+imageArray[7] = "images/Seven_slot_Expanded.png";
 
 function Roll()
 {
+    currentBalance -= currentBetAmount;
+    DebtMilestone();
     document.getElementById("SlotResult1").innerHTML = "";
     document.getElementById("SlotResult2").innerHTML = "";
     document.getElementById("SlotResult3").innerHTML = "";
@@ -39,19 +45,30 @@ function Roll()
         img = imageArray[num3];
         document.getElementById("SlotResult3").innerHTML = ('<img src="' + img + '" width="250px">')
         
-        displayResults();
+        displayBalance();
     }
     else
     {
-        const para = document.createElement("p");
-        para.textContent = "Error. Place in a bet to roll!";
-        document.getElementById("SlotResult1").appendChild(para);
+        SlotMachineSays("Place in a bet to roll!", 3);
     }
+}
+
+function startButtonHoldTime(method)
+{
+    buttonHoldTime = setInterval(method, 200);
+}
+
+function resetButtonHoldTime()
+{
+    clearInterval(buttonHoldTime);
 }
 
 function Add()
 {
-    currentBetAmount += 100;
+    if(currentBetAmount < 1000)
+    {
+        currentBetAmount += 50;
+    }
     displayBet();
 }
 
@@ -59,7 +76,7 @@ function Sub()
 {
     if(currentBetAmount > 0)
     {
-        currentBetAmount -= 100;
+        currentBetAmount -= 50;
     }
     displayBet();
 }
@@ -69,8 +86,43 @@ function displayBet()
     BetAmount.innerHTML = currentBetAmount;
 }
 
-function displayResults()
+function displayBalance()
 {
-    Amount.innerHTML = totalSpent;
-    Times.innerHTML = totalRoll;
+    let balanceString = "$"
+    if(currentBalance < 0)
+    {
+        balanceString = "-$"
+        MoneyDisplay.style.color = "#ff0000";
+        MoneyDisplay.style.fontSize = (textSize + Math.floor(Math.abs(currentBalance) / 5000)) + "px";
+    }
+    balanceString += Math.abs(currentBalance);
+    MoneyDisplay.innerHTML = balanceString;
+}
+
+function SlotMachineSays(line, time)
+{
+    SpeechBubble.style.visibility = "visible";
+    SlotSays.innerHTML = line;
+    setTimeout(CloseSpeechBubble, time * 1000);
+}
+
+function CloseSpeechBubble()
+{
+    SpeechBubble.style.visibility = "hidden";
+    SlotSays.innerHTML = "";
+}
+
+function DebtMilestone()
+{
+    let amountSpent = 10000 - currentBalance;
+    switch(true)
+    {
+        case (amountSpent >= 1000 && amountSpent <= 2499):
+            SlotMachineSays("You already spent past $1,000 huh? That could have bought you 125,165 v-bucks, 250 happy meals, and 2 PS5s.", 8);
+        break;
+
+        case (amountSpent >= 2500 && amountSpent <= 4999):
+            SlotMachineSays("It must be fun pressing a button. You have already spent past $2,500. That's about 1,370,55 Robux, 5,597 cosmic brownies, 21 tickets to Disney world. Truly a child's nightmarish paradise, isn't it?", 10);
+        break;
+    }
 }
